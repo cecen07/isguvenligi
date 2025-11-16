@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yenilikçi Sınıflar - Geleceğin Eğitimi</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            text-align: center;
+            color: white;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            animation: fadeInDown 1s ease;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        .classes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .class-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeIn 0.6s ease;
+            cursor: pointer;
+        }
+
+        .class-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .class-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            animation: pulse 2s infinite;
+        }
+
+        .class-card h2 {
+            color: #667eea;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .class-card p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .features {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .features li {
+            padding: 0.5rem 0;
+            color: #555;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin-top: 1.5rem;
+            transition: transform 0.3s ease;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 3rem 0;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .stats {
+                flex-direction: column;
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🚀 Yenilikçi Sınıflar</h1>
+        <p>Geleceğin Eğitimi Bugün Başlıyor</p>
+    </div>
+
+    <div class="container">
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-number">100+</div>
+                <div class="stat-label">Mezun Öğrenci</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">15+</div>
+                <div class="stat-label">Farklı Program</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">98%</div>
+                <div class="stat-label">Memnuniyet Oranı</div>
+            </div>
+        </div>
+
+        <div class="classes-grid">
+            <div class="class-card">
+                <div class="class-icon">💻</div>
+                <h2>Yapay Zeka & Kodlama</h2>
+                <p>Geleceğin teknolojilerini öğrenin. Python, makine öğrenimi ve yapay zeka temelleri.</p>
+                <ul class="features">
+                    <li>Pratik projeler</li>
+                    <li>Uzman eğitmenler</li>
+                    <li>Sertifika programı</li>
+                </ul>
+                <button class="cta-button">Detaylı Bilgi</button>
+            </div>
+
+            <div class="class-card">
+                <div class="class-icon">🎨</div>
+                <h2>Dijital Tasarım</h2>
+                <p>Yaratıcılığınızı dijital dünyaya taşıyın. UI/UX, grafik tasarım ve animasyon.</p>
+                <ul class="features">
+                    <li>Adobe Creative Cloud</li>
+                    <li>Portfolio oluşturma</li>
+                    <li>Gerçek müşteri projeleri</li>
+                </ul>
+                <button class="cta-button">Detaylı Bilgi</button>
+            </div>
+
+            <div class="class-card">
+                <div class="class-icon">🎯</div>
+                <h2>Girişimcilik</h2>
+                <p>Kendi işinizi kurmayı öğrenin. İş planı, pazarlama ve finans yönetimi.</p>
+                <ul class="features">
+                    <li>Mentor desteği</li>
+                    <li>Networking fırsatları</li>
+                    <li>Yatırımcılarla buluşma</li>
+                </ul>
+                <button class="cta-button">Detaylı Bilgi</button>
+            </div>
+
+            <div class="class-card">
+                <div class="class-icon">🌍</div>
+                <h2>Sürdürülebilirlik</h2>
+                <p>Çevre dostu projeler geliştirin. Yeşil teknoloji ve sosyal etki odaklı çözümler.</p>
+                <ul class="features">
+                    <li>Saha çalışmaları</li>
+                    <li>Proje hibesi desteği</li>
+                    <li>Uluslararası işbirlikleri</li>
+                </ul>
+                <button class="cta-button">Detaylı Bilgi</button>
+            </div>
+
+            <div class="class-card">
+                <div class="class-icon">🎬</div>
+                <h2>İçerik Üretimi</h2>
+                <p>YouTube, podcast ve sosyal medya için profesyonel içerik üretin.</p>
+                <ul class="features">
+                    <li>Video kurgu teknikleri</li>
+                    <li>Kamera ve ses ekipmanları</li>
+                    <li>Marka işbirlikleri</li>
+                </ul>
+                <button class="cta-button">Detaylı Bilgi</button>
+            </div>
+
+            <div class="class-card">
+                <div class="class-icon">🤖</div>
+                <h2>Robotik & IoT</h2>
+                <p>Nesnelerin interneti ve robotik sistemler tasarlayın.</p>
+                <ul class="features">
+                    <li>Arduino ve Raspberry Pi</li>
+                    <li>Sensör programlama</li>
+                    <li>Yarışmalara katılım</li>
+                </ul>
+                <button class="cta-button">Detaylı Bilgi</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.cta-button').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                this.textContent = '✓ İlginiz kaydedildi!';
+                this.style.background = 'linear-gradient(135deg, #56ab2f 0%, #a8e063 100%)';
+                setTimeout(() => {
+                    this.textContent = 'Detaylı Bilgi';
+                    this.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+                }, 2000);
+            });
+        });
+
+        // Kartlara tıklama animasyonu
+        document.querySelectorAll('.class-card').forEach(card => {
+            card.addEventListener('click', function() {
+                this.style.transform = 'scale(0.98)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 200);
+            });
+        });
+    </script>
+</body>
+</html>
