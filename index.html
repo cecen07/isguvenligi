@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yenilikçi Sınıflar - Geleceğin Eğitimi</title>
+    <title>FCL Sınıfları - Future Classroom Lab</title>
     <style>
         * {
             margin: 0;
@@ -19,134 +19,234 @@
         }
 
         .header {
-            background: rgba(255, 255, 255, 0.1);
+            background: linear-gradient(rgba(102, 126, 234, 0.9), rgba(118, 75, 162, 0.9)), url('https://cecen07.github.io/isguvenligi/1751052205984.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             backdrop-filter: blur(10px);
-            padding: 2rem;
+            padding: 5rem 2rem;
             text-align: center;
             color: white;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 0;
+        }
+        
+        .header > * {
+            position: relative;
+            z-index: 1;
         }
 
         .header h1 {
-            font-size: 3rem;
+            font-size: 3.5rem;
             margin-bottom: 0.5rem;
             animation: fadeInDown 1s ease;
         }
 
-        .header p {
-            font-size: 1.2rem;
+        .header .subtitle {
+            font-size: 1.4rem;
             opacity: 0.9;
             animation: fadeInUp 1s ease 0.3s both;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.8;
+            animation: fadeInUp 1s ease 0.5s both;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 3rem auto;
             padding: 0 2rem;
         }
 
-        .classes-grid {
+        .intro-section {
+            background: white;
+            border-radius: 25px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 0.8s ease;
+        }
+
+        .intro-section h2 {
+            color: #667eea;
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .intro-section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .stations-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            gap: 3rem;
             margin-top: 2rem;
         }
 
-        .class-card {
+        .station-card {
             background: white;
-            border-radius: 20px;
-            padding: 2rem;
+            border-radius: 25px;
+            overflow: hidden;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             animation: fadeIn 0.6s ease;
-            cursor: pointer;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
         }
 
-        .class-card:hover {
+        .station-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
         }
 
-        .class-icon {
-            width: 80px;
-            height: 80px;
+        .station-card:nth-child(even) {
+            direction: rtl;
+        }
+
+        .station-card:nth-child(even) > * {
+            direction: ltr;
+        }
+
+        .station-image {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 50%;
+            position: relative;
+            overflow: hidden;
+            min-height: 400px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            animation: pulse 2s infinite;
         }
 
-        .class-card h2 {
+        .station-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .station-card:hover .station-image img {
+            transform: scale(1.1);
+        }
+
+        .station-image .icon {
+            font-size: 8rem;
+            opacity: 0.3;
+            position: absolute;
+        }
+
+        .station-content {
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .station-number {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .station-content h3 {
             color: #667eea;
-            font-size: 1.8rem;
+            font-size: 2rem;
             margin-bottom: 1rem;
         }
 
-        .class-card p {
+        .station-content p {
             color: #666;
-            line-height: 1.6;
-            margin-bottom: 1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
         }
 
-        .features {
-            list-style: none;
+        .equipment-list {
+            background: #f8f9ff;
+            border-radius: 15px;
+            padding: 1.5rem;
             margin-top: 1rem;
         }
 
-        .features li {
-            padding: 0.5rem 0;
-            color: #555;
-            position: relative;
-            padding-left: 1.5rem;
+        .equipment-list h4 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        .features li:before {
-            content: "✓";
+        .equipment-list ul {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.8rem;
+        }
+
+        .equipment-list li {
+            color: #555;
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 1.8rem;
+            font-size: 0.95rem;
+        }
+
+        .equipment-list li:before {
+            content: "⚙️";
             position: absolute;
             left: 0;
-            color: #667eea;
-            font-weight: bold;
-        }
-
-        .cta-button {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            padding: 1rem 2rem;
-            border-radius: 50px;
             font-size: 1.1rem;
-            cursor: pointer;
-            margin-top: 1.5rem;
-            transition: transform 0.3s ease;
-            display: inline-block;
         }
 
-        .cta-button:hover {
-            transform: scale(1.05);
-        }
-
-        .stats {
-            display: flex;
-            justify-content: space-around;
+        .stats-banner {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
             background: white;
-            border-radius: 20px;
-            padding: 2rem;
+            border-radius: 25px;
+            padding: 3rem;
             margin: 3rem 0;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
         }
 
         .stat-item {
             text-align: center;
+            padding: 1rem;
         }
 
         .stat-number {
             font-size: 3rem;
             font-weight: bold;
-            color: #667eea;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 0.5rem;
         }
 
@@ -158,7 +258,7 @@
         @keyframes fadeIn {
             from {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translateY(30px);
             }
             to {
                 opacity: 1;
@@ -188,144 +288,244 @@
             }
         }
 
-        @keyframes pulse {
-            0%, 100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.05);
-            }
-        }
-
-        @media (max-width: 768px) {
+        @media (max-width: 968px) {
             .header h1 {
-                font-size: 2rem;
+                font-size: 2.5rem;
             }
 
-            .stats {
-                flex-direction: column;
-                gap: 2rem;
+            .station-card {
+                grid-template-columns: 1fr;
+            }
+
+            .station-card:nth-child(even) {
+                direction: ltr;
+            }
+
+            .equipment-list ul {
+                grid-template-columns: 1fr;
+            }
+
+            .station-image {
+                min-height: 300px;
             }
         }
     </style>
 </head>
 <body>
     <div class="header">
-        <h1>🚀 Yenilikçi Sınıflar</h1>
-        <p>Geleceğin Eğitimi Bugün Başlıyor</p>
+        <h1>🎓 FCL Sınıfları</h1>
+        <div class="subtitle">Future Classroom Lab</div>
+        <p>Geleceğin Öğrenme Ortamları - 6 Farklı İstasyon, Sınırsız Olasılık</p>
     </div>
 
     <div class="container">
-        <div class="stats">
+        <div class="intro-section">
+            <h2>FCL Nedir?</h2>
+            <p>Future Classroom Lab (FCL), öğrenme ve öğretme deneyimini dönüştürmek için tasarlanmış yenilikçi bir eğitim modelidir. Her bir istasyon, farklı öğrenme stilleri ve ihtiyaçları için optimize edilmiş teknolojik donanım ve esnek öğrenme alanları sunar. Öğrenciler, bu istasyonlarda işbirliği yaparak, yaratıcı projeler geliştirerek ve teknoloji destekli öğrenme yöntemleriyle geleceğe hazırlanır.</p>
+        </div>
+
+        <div class="stats-banner">
             <div class="stat-item">
-                <div class="stat-number">100+</div>
-                <div class="stat-label">Mezun Öğrenci</div>
+                <div class="stat-number">6</div>
+                <div class="stat-label">Öğrenme İstasyonu</div>
             </div>
             <div class="stat-item">
-                <div class="stat-number">15+</div>
-                <div class="stat-label">Farklı Program</div>
+                <div class="stat-number">50+</div>
+                <div class="stat-label">Teknolojik Donanım</div>
             </div>
             <div class="stat-item">
-                <div class="stat-number">98%</div>
-                <div class="stat-label">Memnuniyet Oranı</div>
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Dijital Entegrasyon</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">24/7</div>
+                <div class="stat-label">Erişilebilirlik</div>
             </div>
         </div>
 
-        <div class="classes-grid">
-            <div class="class-card">
-                <div class="class-icon">💻</div>
-                <h2>Yapay Zeka & Kodlama</h2>
-                <p>Geleceğin teknolojilerini öğrenin. Python, makine öğrenimi ve yapay zeka temelleri.</p>
-                <ul class="features">
-                    <li>Pratik projeler</li>
-                    <li>Uzman eğitmenler</li>
-                    <li>Sertifika programı</li>
-                </ul>
-                <button class="cta-button">Detaylı Bilgi</button>
+        <div class="stations-grid">
+            <!-- Create İstasyonu -->
+            <div class="station-card">
+                <div class="station-image">
+                    <div class="icon">🎨</div>
+                    <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?w=800&h=600&fit=crop" alt="Create İstasyonu" onerror="this.style.display='none'">
+                </div>
+                <div class="station-content">
+                    <span class="station-number">İSTASYON 1</span>
+                    <h3>Create - Yaratma İstasyonu</h3>
+                    <p>Öğrencilerin yaratıcılıklarını dijital araçlarla ifade ettikleri, içerik ürettikleri ve projeler tasarladıkları atölyemiz. Video düzenleme, grafik tasarım ve multimedya üretimi için profesyonel ekipmanlarla donatılmıştır.</p>
+                    
+                    <div class="equipment-list">
+                        <h4>🛠️ Donanımlar</h4>
+                        <ul>
+                            <li>4K Video Kameralar</li>
+                            <li>Profesyonel Mikrofon Setleri</li>
+                            <li>Green Screen Sistemi</li>
+                            <li>Aydınlatma Ekipmanları</li>
+                            <li>Grafik Tabletler (Wacom)</li>
+                            <li>3D Yazıcılar</li>
+                            <li>Adobe Creative Cloud</li>
+                            <li>iMac Pro İş İstasyonları</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
 
-            <div class="class-card">
-                <div class="class-icon">🎨</div>
-                <h2>Dijital Tasarım</h2>
-                <p>Yaratıcılığınızı dijital dünyaya taşıyın. UI/UX, grafik tasarım ve animasyon.</p>
-                <ul class="features">
-                    <li>Adobe Creative Cloud</li>
-                    <li>Portfolio oluşturma</li>
-                    <li>Gerçek müşteri projeleri</li>
-                </ul>
-                <button class="cta-button">Detaylı Bilgi</button>
+            <!-- Interact İstasyonu -->
+            <div class="station-card">
+                <div class="station-image">
+                    <div class="icon">🤝</div>
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop" alt="Interact İstasyonu" onerror="this.style.display='none'">
+                </div>
+                <div class="station-content">
+                    <span class="station-number">İSTASYON 2</span>
+                    <h3>Interact - Etkileşim İstasyonu</h3>
+                    <p>İşbirliği ve etkileşimli öğrenmenin merkezindeki bu istasyonda, öğrenciler grup çalışmaları yapar, tartışır ve birlikte problem çözer. Akıllı tahta ve interaktif ekranlarla donatılmış modern bir öğrenme alanı.</p>
+                    
+                    <div class="equipment-list">
+                        <h4>🛠️ Donanımlar</h4>
+                        <ul>
+                            <li>75" Akıllı Tahta (Smart Board)</li>
+                            <li>Dokunmatik Ekranlar</li>
+                            <li>Kablosuz Sunum Sistemleri</li>
+                            <li>Grup Çalışma Masaları</li>
+                            <li>Whiteboard Duvarlar</li>
+                            <li>Tablet Setleri (iPad)</li>
+                            <li>Video Konferans Sistemi</li>
+                            <li>Mobil Şarj İstasyonları</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
 
-            <div class="class-card">
-                <div class="class-icon">🎯</div>
-                <h2>Girişimcilik</h2>
-                <p>Kendi işinizi kurmayı öğrenin. İş planı, pazarlama ve finans yönetimi.</p>
-                <ul class="features">
-                    <li>Mentor desteği</li>
-                    <li>Networking fırsatları</li>
-                    <li>Yatırımcılarla buluşma</li>
-                </ul>
-                <button class="cta-button">Detaylı Bilgi</button>
+            <!-- Present İstasyonu -->
+            <div class="station-card">
+                <div class="station-image">
+                    <div class="icon">🎤</div>
+                    <img src="https://images.unsplash.com/photo-1560439514-4e9645039924?w=800&h=600&fit=crop" alt="Present İstasyonu" onerror="this.style.display='none'">
+                </div>
+                <div class="station-content">
+                    <span class="station-number">İSTASYON 3</span>
+                    <h3>Present - Sunum İstasyonu</h3>
+                    <p>Öğrencilerin fikirlerini, projelerini ve araştırmalarını profesyonel bir ortamda sunabilecekleri, sunum becerilerini geliştirebilecekleri özel tasarlanmış bir alan. Sahne ve stüdyo ekipmanlarıyla desteklenir.</p>
+                    
+                    <div class="equipment-list">
+                        <h4>🛠️ Donanımlar</h4>
+                        <ul>
+                            <li>Projektör Sistemleri (4K)</li>
+                            <li>Motorlu Projeksiyon Perdesi</li>
+                            <li>Kablosuz Mikrofon Setleri</li>
+                            <li>Sunum Kürsüsü</li>
+                            <li>Ses Sistemi & Amfi</li>
+                            <li>Teleprompter</li>
+                            <li>Kayıt Sistemi</li>
+                            <li>Streaming Ekipmanı</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
 
-            <div class="class-card">
-                <div class="class-icon">🌍</div>
-                <h2>Sürdürülebilirlik</h2>
-                <p>Çevre dostu projeler geliştirin. Yeşil teknoloji ve sosyal etki odaklı çözümler.</p>
-                <ul class="features">
-                    <li>Saha çalışmaları</li>
-                    <li>Proje hibesi desteği</li>
-                    <li>Uluslararası işbirlikleri</li>
-                </ul>
-                <button class="cta-button">Detaylı Bilgi</button>
+            <!-- Investigate İstasyonu -->
+            <div class="station-card">
+                <div class="station-image">
+                    <div class="icon">🔬</div>
+                    <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=800&h=600&fit=crop" alt="Investigate İstasyonu" onerror="this.style.display='none'">
+                </div>
+                <div class="station-content">
+                    <span class="station-number">İSTASYON 4</span>
+                    <h3>Investigate - Araştırma İstasyonu</h3>
+                    <p>Bilimsel düşünme ve araştırma becerilerinin geliştirildiği bu istasyonda, öğrenciler deneyler yapar, veri analizi gerçekleştirir ve bilimsel projeleri hayata geçirir. STEM odaklı donanımlarla desteklenir.</p>
+                    
+                    <div class="equipment-list">
+                        <h4>🛠️ Donanımlar</h4>
+                        <ul>
+                            <li>Dijital Mikroskoplar</li>
+                            <li>Sensör Kitleri (Arduino)</li>
+                            <li>Veri Toplama Cihazları</li>
+                            <li>Robotik Setler</li>
+                            <li>LEGO Mindstorms</li>
+                            <li>Raspberry Pi Kitleri</li>
+                            <li>Analiz Yazılımları</li>
+                            <li>Lab Ekipmanları</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
 
-            <div class="class-card">
-                <div class="class-icon">🎬</div>
-                <h2>İçerik Üretimi</h2>
-                <p>YouTube, podcast ve sosyal medya için profesyonel içerik üretin.</p>
-                <ul class="features">
-                    <li>Video kurgu teknikleri</li>
-                    <li>Kamera ve ses ekipmanları</li>
-                    <li>Marka işbirlikleri</li>
-                </ul>
-                <button class="cta-button">Detaylı Bilgi</button>
+            <!-- Develop İstasyonu -->
+            <div class="station-card">
+                <div class="station-image">
+                    <div class="icon">💻</div>
+                    <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&h=600&fit=crop" alt="Develop İstasyonu" onerror="this.style.display='none'">
+                </div>
+                <div class="station-content">
+                    <span class="station-number">İSTASYON 5</span>
+                    <h3>Develop - Geliştirme İstasyonu</h3>
+                    <p>Kodlama ve yazılım geliştirme için özel olarak tasarlanmış bu istasyonda, öğrenciler uygulama geliştirme, web tasarımı ve programlama projelerini hayata geçirir. Güçlü bilgisayarlar ve geliştirme araçlarıyla donatılmıştır.</p>
+                    
+                    <div class="equipment-list">
+                        <h4>🛠️ Donanımlar</h4>
+                        <ul>
+                            <li>Yüksek Performanslı PC'ler</li>
+                            <li>Çift Monitör Sistemleri</li>
+                            <li>Mekanik Klavyeler</li>
+                            <li>Programlama IDE'leri</li>
+                            <li>GitHub Enterprise</li>
+                            <li>Cloud Geliştirme Platformları</li>
+                            <li>VR Geliştirme Kitleri</li>
+                            <li>Mobil Test Cihazları</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
 
-            <div class="class-card">
-                <div class="class-icon">🤖</div>
-                <h2>Robotik & IoT</h2>
-                <p>Nesnelerin interneti ve robotik sistemler tasarlayın.</p>
-                <ul class="features">
-                    <li>Arduino ve Raspberry Pi</li>
-                    <li>Sensör programlama</li>
-                    <li>Yarışmalara katılım</li>
-                </ul>
-                <button class="cta-button">Detaylı Bilgi</button>
+            <!-- Exchange İstasyonu -->
+            <div class="station-card">
+                <div class="station-image">
+                    <div class="icon">🌐</div>
+                    <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&h=600&fit=crop" alt="Exchange İstasyonu" onerror="this.style.display='none'">
+                </div>
+                <div class="station-content">
+                    <span class="station-number">İSTASYON 6</span>
+                    <h3>Exchange - Paylaşım İstasyonu</h3>
+                    <p>Küresel iletişim ve kültürlerarası öğrenmenin gerçekleştiği bu istasyonda, öğrenciler dünya çapındaki akranlarıyla bağlantı kurar, bilgi paylaşır ve ortak projeler geliştirir. Uzaktan eğitim ve iletişim teknolojileriyle donatılmıştır.</p>
+                    
+                    <div class="equipment-list">
+                        <h4>🛠️ Donanımlar</h4>
+                        <ul>
+                            <li>Video Konferans Sistemi</li>
+                            <li>360° Kameralar</li>
+                            <li>VR Gözlükler (Meta Quest)</li>
+                            <li>Dijital İşbirliği Platformları</li>
+                            <li>Çeviri Cihazları</li>
+                            <li>Podcast Ekipmanları</li>
+                            <li>Sosyal Medya Yönetim Araçları</li>
+                            <li>Bulut Depolama Sistemleri</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
     <script>
-        document.querySelectorAll('.cta-button').forEach(button => {
-            button.addEventListener('click', function(e) {
-                e.preventDefault();
-                this.textContent = '✓ İlginiz kaydedildi!';
-                this.style.background = 'linear-gradient(135deg, #56ab2f 0%, #a8e063 100%)';
-                setTimeout(() => {
-                    this.textContent = 'Detaylı Bilgi';
-                    this.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
-                }, 2000);
+        // Sayfa yüklendiğinde animasyon başlatma
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.station-card');
+            
+            cards.forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.1}s`;
             });
         });
 
-        // Kartlara tıklama animasyonu
-        document.querySelectorAll('.class-card').forEach(card => {
-            card.addEventListener('click', function() {
-                this.style.transform = 'scale(0.98)';
-                setTimeout(() => {
-                    this.style.transform = '';
-                }, 200);
+        // Hover efektleri
+        document.querySelectorAll('.station-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.querySelector('.station-number').style.transform = 'scale(1.1)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.querySelector('.station-number').style.transform = 'scale(1)';
             });
         });
     </script>
